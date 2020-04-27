@@ -7,12 +7,12 @@
 ;-------------------------------------------------------------------------------
 
 [Plugin]
-Id=org.cosmichorror.sakuraeditor.plugin.RestructuredText
+Id=org.cosmichorror.sakuraeditor.plugin.RestructuredTextOutline
 Name=Restructured Text Outline Plugin
 Description=Restructured Text Outline Plugin
 Type=wsh
 Author=tohosaku
-Version=0.0.0.1
+Version=0.1.0.0
 Url=https://github.com/tohosaku/SakuraEditorTypeRest
 
 [Plug]

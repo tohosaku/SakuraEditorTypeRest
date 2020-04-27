@@ -6,11 +6,16 @@
   // タイトル
   Outline.SetTitle("Restructured Text");
 
+  // 直前行
+  var prevLine = ''
+  
   // 現在行
   var curLine = ''
 
   // 行数
   var lineCount = Editor.GetLineCount(0);
+  
+  var docTitle = null
 
   // アウトラインの情報
   var outline = [];
@@ -33,18 +38,25 @@
     
   for (var no = 0; no <= lineCount; no++) {
     // // 現在の文字の文字数を取得
-    // var curWidth = Editor.GetStrWidth(curLine);
     
     var nextLine  = Editor.GetLineStr(no + 1);
-    var m = nextLine.match(reHeader)
-    // 現在行の次の行がセクション区切り文字になっているか
-    if (m) {
-      if (typeof sectionLevel[m[1]] === 'undefined') {
-        lv = lv + 1
-        sectionLevel[m[1]] = lv
+    
+    var mprev = prevLine.match(reHeader)
+    var mnext = nextLine.match(reHeader)
+    if (no > 0 && mnext) {
+      // 現在行の次の行がセクション区切り文字になっているか。
+      // 直前の行も同じ区切り文字を使っている場合別個のセクションとみなす
+      var key = mnext[1]
+      if (mprev && key === mprev[1]) {
+        key = key + mprev[1]
       }
-      outline.add(no, curLine, sectionLevel[m[1]])
+      if (typeof sectionLevel[key] === 'undefined') {
+        lv = lv + 1
+        sectionLevel[key] = lv
+      }
+      outline.add(no, curLine, sectionLevel[key])
     }
+    prevLine = curLine;
     curLine = nextLine;
   }
     

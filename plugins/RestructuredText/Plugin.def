@@ -1,0 +1,23 @@
+;-------------------------------------------------------------------------------
+; Sakura Editor Restructured Text Outline Plugin
+; 
+; @author tohosaku <tohosaku@users.osdn.me>
+; @copyright Copyright 2020 tohosaku
+; @license http://www.opensource.org/licenses/mit-license.php MIT License
+;-------------------------------------------------------------------------------
+
+[Plugin]
+Id=org.cosmichorror.sakuraeditor.plugin.RestructuredText
+Name=Restructured Text Outline Plugin
+Description=Restructured Text Outline Plugin
+Type=wsh
+Author=tohosaku
+Version=0.0.0.1
+Url=https://github.com/tohosaku/SakuraEditorTypeRest
+
+[Plug]
+Outline=js\outline.js
+Outline.Label=RestructuredText
+
+[Wsh]
+UseCache=0
